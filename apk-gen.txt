@@ -1,0 +1,10 @@
+#gerar apk
+
+ionic capacitor add android
+ionic build
+ionic capacitor sync android
+./gradlew clean
+./gradlew assembleDebug
+
+#instalar apk
+adb install nome_do_apk.apk

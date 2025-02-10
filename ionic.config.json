@@ -1,0 +1,7 @@
+{
+  "name": "MatENEM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
