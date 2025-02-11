@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
 import TabBar from '@/components/TabBar.vue';
+import showInterstitial from '@/service/Interstitial';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -44,7 +45,8 @@ let erros = ref(0)
 let total = ref('')
 let totalQuestoes = ref(0)
 
-onMounted(()=>{
+onMounted(async ()=>{
+  await showInterstitial()
   acertos.value = Number(route.params.acertos)
   erros.value = Number(route.params.erros)
   totalQuestoes.value = Number(route.params.totalQuestoes)
