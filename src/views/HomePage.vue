@@ -1,10 +1,6 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar class="custom-tool-bar">
-        <ion-title>Matemática ENEM 2025</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <TabBar title="Home" />
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
@@ -24,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import TabBar from '@/components/TabBar.vue';
 import showBanner from '@/service/Banner';
 import { AdMob, AdMobInitializationOptions } from '@capacitor-community/admob';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';

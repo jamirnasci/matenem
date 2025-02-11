@@ -1,10 +1,6 @@
 <template>
   <IonPage>
-    <ion-header :translucent="true">
-      <ion-toolbar class="custom-tool-bar">
-        <ion-title>Resultado</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <TabBar title="Resultado" />
   <IonContent :fullscreen="true">
     <div id="container">
       <h1>Estatísticas</h1>
@@ -36,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import TabBar from '@/components/TabBar.vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';

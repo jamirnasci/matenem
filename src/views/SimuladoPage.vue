@@ -1,22 +1,17 @@
 <template>
     <IonPage>
-        <ion-header :translucent="true">
-            <ion-toolbar  class="custom-tool-bar">
-                <ion-title>Simulado</ion-title>
-            </ion-toolbar>
-        </ion-header>
+        <TabBar title="Simulado" />
         <ion-content :fullscreen="true">
             <div id="container">
                 <h1>Questões</h1>
                 <div id="questionsBox">
-
                     <div v-for="question, i in questions">
                         <div>
-                            <p>{{ question.comando }}</p>
+                            <p>{{ `${i+1}) ${question.comando}` }}</p>
                             <div id="radioGroup">
                                 <div>
                                     <input type="radio" v-bind:name="'q' + i" value="a">
-                                    {{ question.a }}
+                                    <span>{{ question.a }}</span>
                                 </div>
                                 <div>
                                     <input type="radio" v-bind:name="'q' + i" value="b">
@@ -46,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import TabBar from '@/components/TabBar.vue';
 import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -85,12 +81,14 @@ function corrigir(event: any) {
     tag.setAttribute('disabled', 'true')
 }
 
-function finalizar(){
-    router.push({name: 'Resultado', params: {
-        acertos: acertos.value,
-        erros: erros.value,
-        totalQuestoes: totalQuestoes.value
-    }})
+function finalizar() {
+    router.push({
+        name: 'Resultado', params: {
+            acertos: acertos.value,
+            erros: erros.value,
+            totalQuestoes: totalQuestoes.value
+        }
+    })
 }
 </script>
 <style scoped>
@@ -103,7 +101,6 @@ function finalizar(){
     background: radial-gradient(white, lightgray);
     transform: translateY(-50%);
     margin-top: 300px;
-    overflow-y: scroll;
 }
 
 #questionsBox {
@@ -112,6 +109,17 @@ function finalizar(){
 
 p {
     text-align: justify;
+}
+
+#radioGroup > div{
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"]{
+    height: 20px;
+    width: 20px;
+    margin: 5px;
 }
 
 #corrigirBtn {
@@ -126,10 +134,11 @@ p {
     margin: 5px;
 }
 
+
 #finalizarBtn {
     width: 100%;
     border: none;
-    background-color: deepskyblue;
+    background-color: forestgreen;
     color: white;
     font-weight: bold;
     padding: 10px;
