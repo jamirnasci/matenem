@@ -1,10 +1,18 @@
 import { AdMob, AdOptions } from "@capacitor-community/admob";
 
-export default async function showInterstitial(){
-  const TEST_ID = 'ca-app-pub-3940256099942544/1033173712'
-  const options: AdOptions = {
-    adId: TEST_ID
+export default class Interstitial {
+
+  private options: AdOptions
+  private TEST_ID: string = 'ca-app-pub-3940256099942544/1033173712'
+  constructor(){
+    this.options = {
+      adId: this.TEST_ID,
+      isTesting: true
+    }
   }
-  AdMob.prepareInterstitial(options)
-  AdMob.showInterstitial()
+
+  async showInterstitial(){
+    await AdMob.prepareInterstitial(this.options)
+    await AdMob.showInterstitial()
+  }
 }

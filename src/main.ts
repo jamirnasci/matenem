@@ -15,6 +15,13 @@ import '@ionic/vue/css/display.css';
 import '@ionic/vue/css/palettes/dark.class.css';
 import './theme/variables.css';
 import { AdMobPlus } from '@admob-plus/capacitor';
+import { AdMob } from '@capacitor-community/admob';
+
+
+(async function loadAds(){
+  let {status} = await AdMob.trackingAuthorizationStatus()
+  await AdMob.initialize()
+})()
 
 const app = createApp(App)
   .use(IonicVue)

@@ -2,16 +2,14 @@
   <ion-page>
     <TabBar title="Home" />
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Matemática ENEM 2025</ion-title>
-        </ion-toolbar>
-      </ion-header>
 
       <div id="container">
-        <strong>Pronto para mais um simulado ?</strong>
-        <input type="button" value="Iniciar Simulado" id="simuladoBtn"/>
-        <div :style="'display:'+isVisible">
+        <h1>Matemática ENEM 2025</h1>
+        <div>
+          <strong>Pronto para mais um simulado ?</strong><br>
+          <input type="button" value="Iniciar Simulado" id="simuladoBtn" @click="simulado" />
+        </div>
+        <div :style="'display:' + isVisible">
           <strong>Seu último aproveitamento foi:<h2>{{ lastNota }}%</h2></strong>
         </div>
       </div>
@@ -21,6 +19,7 @@
 
 <script setup lang="ts">
 import TabBar from '@/components/TabBar.vue';
+import Banner from '@/service/Banner';
 import showBanner from '@/service/Banner';
 import { AdMob, AdMobInitializationOptions } from '@capacitor-community/admob';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
@@ -30,11 +29,6 @@ import { onBeforeRouteUpdate, useRouter } from 'vue-router';
 let isVisible = ref('none')
 let lastNota = ref('')
 const router = useRouter()
-
-async function loadAds(){
-  let {status} = await AdMob.trackingAuthorizationStatus()
-  await AdMob.initialize()
-}
 
 function updateLastNota() {
   let localStorageNota = localStorage.getItem('last_note');
@@ -51,13 +45,15 @@ onBeforeRouteUpdate((to, from, next) => {
   next();
 });
 
+const banner: Banner = new Banner()
+
+async function simulado() {
+  await banner.hideBanner()
+  router.push({ name: 'Simulado' })
+}
+
 onMounted(async () => {
-  await loadAds()
-  await showBanner()
-  let btn = document.getElementById('simuladoBtn')
-  btn?.addEventListener('click', () => {
-    router.push({name:'Simulado'})
-  })
+  await banner.showBanner()
   updateLastNota()
 })
 
@@ -66,7 +62,7 @@ onMounted(async () => {
 #container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background: radial-gradient(white, lightgray);
@@ -86,9 +82,7 @@ onMounted(async () => {
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 

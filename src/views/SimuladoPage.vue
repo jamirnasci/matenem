@@ -43,8 +43,10 @@
 <script setup lang="ts">
 import TabBar from '@/components/TabBar.vue';
 import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
+import Swal from 'sweetalert2';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+
 const questions: any = ref([])
 let acertos = ref(0)
 let erros = ref(0)
@@ -75,6 +77,7 @@ function corrigir(event: any) {
         acertos.value++
     } else {
         tag.innerHTML = 'Errado ❌'
+        alert(`Errado, a altertativa correta era a letra ${gabarito.toUpperCase()}`)
         tag.style.backgroundColor = 'red'
         erros.value++
     }
@@ -101,6 +104,7 @@ function finalizar() {
     background: radial-gradient(white, lightgray);
     transform: translateY(-50%);
     margin-top: 300px;
+    overflow-y: auto;
 }
 
 #questionsBox {
