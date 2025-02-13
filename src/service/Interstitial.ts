@@ -7,7 +7,7 @@ export default class Interstitial {
   constructor(){
     this.options = {
       adId: this.TEST_ID,
-      isTesting: true
+      isTesting: false
     }
   }
 

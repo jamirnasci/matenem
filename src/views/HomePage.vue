@@ -74,7 +74,6 @@ onMounted(async () => {
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 800px;
   height: 100%;
   transform: translateY(0);
   animation: fadeIn 1.5s ease-out;
