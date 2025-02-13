@@ -3,7 +3,7 @@ import { AdMob, AdOptions } from "@capacitor-community/admob";
 export default class Interstitial {
 
   private options: AdOptions
-  private TEST_ID: string = 'ca-app-pub-3940256099942544/1033173712'
+  private TEST_ID: string = 'ca-app-pub-2077187211919243/5907318866'
   constructor(){
     this.options = {
       adId: this.TEST_ID,

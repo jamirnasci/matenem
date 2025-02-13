@@ -1,7 +1,16 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
-
+html, body{
+  height: 100%;
+}
 .custom-tool-bar{
-  --background: orangered;
+  --background: linear-gradient(45deg, #ff416c, #ff4b2b);;
   --color: white;
+  position: fixed;
+  height: 65px;
+  display: flex;
+}
+ion-title{
+  font-size: 1.5rem;
+  font-weight: bold;
 }

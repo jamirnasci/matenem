@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  const props = defineProps(['title'])
+import { IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
+const props = defineProps(['title'])
 </script>
 
 <template>

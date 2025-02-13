@@ -42,8 +42,7 @@
 
 <script setup lang="ts">
 import TabBar from '@/components/TabBar.vue';
-import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
-import Swal from 'sweetalert2';
+import { IonPage, IonContent } from '@ionic/vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -73,12 +72,12 @@ function corrigir(event: any) {
 
     if (checkedItem.value === gabarito) {
         tag.innerHTML = 'Correto ✔️'
-        tag.style.backgroundColor = 'limegreen'
+        tag.style.background = 'limegreen'
         acertos.value++
     } else {
         tag.innerHTML = 'Errado ❌'
         alert(`Errado, a altertativa correta era a letra ${gabarito.toUpperCase()}`)
-        tag.style.backgroundColor = 'red'
+        tag.style.background = 'red'
         erros.value++
     }
     tag.setAttribute('disabled', 'true')
@@ -86,7 +85,8 @@ function corrigir(event: any) {
 
 function finalizar() {
     router.push({
-        name: 'Resultado', params: {
+        name: 'Resultado', 
+        params: {
             acertos: acertos.value,
             erros: erros.value,
             totalQuestoes: totalQuestoes.value
@@ -100,13 +100,15 @@ function finalizar() {
     flex-direction: column;
     text-align: left;
     align-items: center;
-    height: 100%;
-    background: radial-gradient(white, lightgray);
-    transform: translateY(-50%);
-    margin-top: 300px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     overflow-y: auto;
+    margin-top: 50px;
 }
-
+h1{
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: gray;
+}
 #questionsBox {
     padding: 10px;
 }
@@ -129,10 +131,10 @@ input[type="radio"]{
 #corrigirBtn {
     width: 100%;
     border: none;
-    background-color: darkblue;
+    background: linear-gradient(45deg, royalblue, blue, darkblue);
     color: white;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px lightgray;
+    box-shadow: 0px 0px 10px gray;
     padding: 15px;
     font-size: 3.5vw;
     margin: 5px;

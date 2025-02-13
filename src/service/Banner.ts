@@ -10,8 +10,7 @@ export default class Banner {
       adId: this.TEST_ID,
       adSize: BannerAdSize.ADAPTIVE_BANNER,
       position: BannerAdPosition.BOTTOM_CENTER,
-      margin: 0,
-      isTesting: true
+      margin: 0
     }
   }
   async showBanner(){
