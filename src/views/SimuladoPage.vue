@@ -131,12 +131,12 @@ input[type="radio"]{
 #corrigirBtn {
     width: 100%;
     border: none;
-    background: linear-gradient(45deg, royalblue, blue, darkblue);
+    background: linear-gradient(45deg,  #5b9aad, #315cad);
     color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 10px gray;
     padding: 15px;
-    font-size: 3.5vw;
+    font-size: 4vh;
     margin: 5px;
 }
 
@@ -148,6 +148,6 @@ input[type="radio"]{
     color: white;
     font-weight: bold;
     padding: 10px;
-    font-size: 3.5vw;
+    font-size: 4vh;
 }
 </style>

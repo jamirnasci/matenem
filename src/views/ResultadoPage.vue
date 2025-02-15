@@ -14,14 +14,14 @@
       <div class="result-box">
         <span>Acertou</span>
         <span>
-          <strong>{{ acertos }}</strong>
+          <strong style="color: forestgreen;">{{ acertos }}</strong>
         </span>
       </div>
       <div class="line"></div>
       <div class="result-box">
         <span>Errou</span>
         <span>
-          <strong>{{ erros }}</strong>
+          <strong style="color: red;">{{ erros }}</strong>
         </span>
       </div>
       <strong>Total: <span :style="`color: ${noteColor}`">{{ total }}%</span></strong>
@@ -112,7 +112,7 @@ h1 {
 
 .result-box strong {
   font-size: 1.75rem;
-  color: #ff416c;
+  color: #315cad;
 }
 
 .line {
@@ -125,10 +125,10 @@ h1 {
 
 #menuBtn {
   background-color: #ff4b2b;
-  background-image: linear-gradient(45deg, #ff416c, #ff4b2b);
+  background-image: linear-gradient(45deg, #5b9aad, #315cad);
   padding: 10px 30px;
   border-radius: 50px;
-  box-shadow: 0px 5px 20px rgba(255, 75, 43, 0.3);
+  box-shadow: 0px 5px 20px royalblue;
   border: none;
   color: white;
   font-size: 1.25rem;
@@ -142,7 +142,7 @@ h1 {
 
 #menuBtn:hover {
   transform: scale(1.05);
-  box-shadow: 0px 10px 30px rgba(255, 75, 43, 0.5);
+  box-shadow: 0px 10px 30px royalblue;
 }
 
 strong {

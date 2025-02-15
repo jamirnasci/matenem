@@ -4,7 +4,7 @@ html, body{
   height: 100%;
 }
 .custom-tool-bar{
-  --background: linear-gradient(45deg, #ff416c, #ff4b2b);;
+  --background: linear-gradient(45deg, #315cad, #5b9aad);;
   --color: white;
   position: fixed;
   height: 65px;

@@ -2,7 +2,6 @@
   <ion-page>
     <TabBar title="Home" />
     <ion-content :fullscreen="true">
-
       <div id="container">
         <h1>Matemática ENEM 2025</h1>
         <div>
@@ -31,31 +30,40 @@ let isVisible = ref('none')
 let lastNota = ref('')
 const router = useRouter()
 const noteColor = ref('gray')
+let banner: Banner | null = null
 
 function updateLastNota() {
-  let localStorageNota = localStorage.getItem('last_note');
+  let localStorageNota = localStorage.getItem('last_note')
   noteColor.value = getNoteColor(Number(localStorageNota))
-  lastNota.value = localStorageNota !== null ? localStorageNota : '';
+  lastNota.value = localStorageNota !== null ? localStorageNota : ''
+
   if (lastNota.value) {
-    isVisible.value = 'block';
+    isVisible.value = 'block'
   } else {
-    isVisible.value = 'none';
+    isVisible.value = 'none'
   }
 }
 //atualiza a ultima nota quando acessa a rota
 onBeforeRouteUpdate((to, from, next) => {
-  updateLastNota();
-  next();
-});
-
-const banner: Banner = new Banner()
+  updateLastNota()
+  next()
+})
 
 async function simulado() {
-  await banner.hideBanner()
-  router.push({ name: 'Simulado' })
+  if(banner != null){
+    await banner.hideBanner()
+    router.push({ name: 'Simulado' })
+  }
 }
 
 onMounted(async () => {
+  //carrega os anuncios
+  let {status} = await AdMob.trackingAuthorizationStatus()
+  const options: AdMobInitializationOptions = {
+    initializeForTesting: false,
+  }
+  await AdMob.initialize(options)
+  banner = new Banner()
   await banner.showBanner()
   updateLastNota()
 })
@@ -82,7 +90,7 @@ onMounted(async () => {
 h1 {
   font-size: 2.5rem;
   font-weight: bold;
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #315cad, #5b9aad);
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 1rem;
@@ -96,10 +104,10 @@ strong {
 
 #simuladoBtn {
   background-color: #ff4b2b;
-  background-image: linear-gradient(45deg, #ff416c, #ff4b2b);
+  background-image: linear-gradient(45deg, #315cad, #5b9aad);
   padding: 15px 30px;
   border-radius: 50px;
-  box-shadow: 0px 5px 20px rgba(255, 75, 43, 0.3);
+  box-shadow: 0px 5px 20px royalblue;
   border: none;
   color: white;
   font-size: 1.25rem;
@@ -112,7 +120,7 @@ strong {
 
 #simuladoBtn:hover {
   transform: scale(1.05);
-  box-shadow: 0px 10px 30px rgba(255, 75, 43, 0.5);
+  box-shadow: 0px 10px 30px darkblue;
 }
 
 h2 {
