@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     component: HomePage
   },
   {
-    path: '/simulado',
+    path: '/simulado/:questionsN',
     name: 'Simulado',
     component: SimuladoPage
   },

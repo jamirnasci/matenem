@@ -11,6 +11,7 @@ html, body{
   display: flex;
   justify-content: left;
   align-items: center;
+  box-shadow: 0px 0px 10px black;
 }
 ion-title{
   font-size: 1.5rem;

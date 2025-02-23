@@ -50,15 +50,28 @@ const questions: any = ref([])
 let acertos = ref(0)
 let erros = ref(0)
 let totalQuestoes = ref(0)
+let questionsN = ref(0)
 const router = useRouter()
+const route = useRoute()
+
+function randomNQuestions(list: Array<any>, n: number): any{
+    let sortedQuestions: Array<any> = []
+    for(let i = 0; i < n; i++){
+        let randomIndex = Math.floor(Math.random() * (list.length - 1))
+        sortedQuestions.push(list[randomIndex])
+        list.splice(randomIndex, 1)
+    }
+    return sortedQuestions
+}
 
 onMounted(async () => {
     let url = 'https://raw.githubusercontent.com/jamirnasci/mat_enem_policy/refs/heads/main/questions.json'
     try {
         let response = await fetch(url)
         let obj = await response.json()
-        questions.value = obj
-        totalQuestoes.value = obj.length
+        questionsN.value = Number(route.params.questionsN)
+        questions.value = randomNQuestions(obj, questionsN.value)
+        totalQuestoes.value = questions.value.length
     } catch (err) {
         console.log(err)
     }

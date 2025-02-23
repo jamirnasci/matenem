@@ -34,8 +34,8 @@
 <script setup lang="ts">
 import { getNoteColor } from '@/components/NoteColor';
 import TabBar from '@/components/TabBar.vue';
-import Interstitial from '@/service/Interstitial';
-import showInterstitial from '@/service/Interstitial';
+import Interstitial from '@/ads/Interstitial';
+import showInterstitial from '@/ads/Interstitial';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
